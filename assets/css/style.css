@@ -11,107 +11,81 @@ a {
 }
 
 html,
-body {
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-}
-
-.box {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 400px;
-    height: 150px;
-    background: #262626;
-    padding: 3px;
-    text-align: center;
-}
-
-.inner_box {
-    position: relative;
+body,
+#electricStage {
     width: 100%;
     height: 100%;
-    background: #fff;
+}
+
+body {
+    background: radial-gradient(1200px 600px at 10% 10%, #071020 0%, rgba(7, 16, 32, 0) 30%),
+        radial-gradient(1000px 500px at 90% 80%, #081422 0%, rgba(8, 20, 34, 0) 28%), #05060a;
     overflow: hidden;
 }
 
-.box::before {
-    content: "";
+/* Container */
+.electric-ui {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.electric-stage {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+}
+
+.electric-btn {
     position: absolute;
-    top: 0;
-    left: -50%;
-    width: 50%;
-    height: 100%;
-    background: #fff;
-    transition: 0.5s;
-}
-
-.box::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: -50%;
-    width: 50%;
-    height: 100%;
-    background: #fff;
-    transition: 0.5s;
-    z-index: 10;
-}
-
-.inner_box::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -50%;
-    width: 50%;
-    height: 100%;
-    background: #262626;
-    transition: 0.5s;
-}
-
-.inner_box::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: -50%;
-    width: 50%;
-    height: 100%;
-    background: #262626;
-    transition: 0.5s;
-    z-index: 11;
-}
-
-.box:hover::before {
-    left: 0;
-}
-
-.box:hover::after {
-    right: 0;
-}
-
-.box:hover .inner_box::before {
-    left: 0;
-}
-
-.box:hover .inner_box::after {
-    right: 0;
-}
-
-h1 {
-    position: absolute;
-    top: 50%;
+    z-index: 12;
+    pointer-events: auto;
+    bottom: 48px;
     left: 50%;
-    transform: translate(-50%, -50%);
-    text-transform: uppercase;
-    font-size: 4em;
-    color: #000;
-    text-align: center;
-    z-index: 100;
+    transform: translateX(-50%);
+    padding: 14px 34px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+    color: #dff6ff;
+    font-weight: 600;
+    letter-spacing: 1px;
+    font-size: 15px;
+    box-shadow: 0 6px 30px rgba(0, 200, 255, 0.03), inset 0 -6px 20px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+    backdrop-filter: blur(6px);
 }
 
-.box:hover h1 {
-    color: #fff;
-    transition: color 0.1s ease-in-out;
+.electric-btn:active {
+    transform: translateX(-50%) translateY(2px);
+}
+
+.logo-fallback {
+    position: absolute;
+    z-index: 11;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%, -50%);
+    color: #bfefff;
+    font-weight: 800;
+    font-size: 44px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    pointer-events: none;
+    mix-blend-mode: screen;
+}
+
+@media (max-width: 600px) {
+    .electric-btn {
+        padding: 12px 20px;
+        font-size: 13px;
+    }
+    .logo-fallback {
+        font-size: 28px;
+        letter-spacing: 3px;
+    }
 }
